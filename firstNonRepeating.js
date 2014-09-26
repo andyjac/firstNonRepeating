@@ -1,13 +1,12 @@
 function firstNonRepeating(text) {
-  var len = text.length, i, currentChar, nextChar;
+  var len = text.length, i, currentChar;
 
   for (i = 0; i < len; i++) {
     currentChar = text.charAt(i);
-    nextChar = text[text.indexOf(currentChar) + 1];
-    if (currentChar !== nextChar) {
+    if (text.lastIndexOf(currentChar, i) === i) {
       return currentChar;
     }
   }
 }
 
-console.log(firstNonRepeating("aaaaaaaabbcdefg"));
+console.log(firstNonRepeating("aaaabcdebfg"));
