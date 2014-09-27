@@ -1,17 +1,19 @@
 function firstNonRepeating(text) {
-  var len = text.length, space = ' ', i, currentChar, firstOccurence, remainingOccurences;
+  var len = text.length, space = ' ', charTracker = {}, i, numberOfOccurences;
   if (len === 0) {
-    return text;
+    return '';
   }
   for (i = 0; i < len; i++) {
-    currentChar = text.charAt(i);
-    firstOccurence = text.indexOf(currentChar);
-    remainingOccurences = text.indexOf(currentChar, i + 1);
-    if (currentChar !== space && firstOccurence === i && remainingOccurences === -1) {
-      return currentChar;
+    currentChar = text[i];
+    var letterInObject = charTracker["letter " + currentChar];
+    if (letterInObject && currentChar !== space) {
+      charTracker["letter " + currentChar] += 1;
+    } else if (!letterInObject && currentChar !== space) {
+      charTracker["letter " + currentChar] = 1;
     }
   }
-  return '';
+  console.log(charTracker);
 }
 
 console.log(firstNonRepeating("a a aab c debfg"));
+console.log(firstNonRepeating(''));
