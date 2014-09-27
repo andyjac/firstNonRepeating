@@ -1,11 +1,11 @@
 function firstNonRepeating(text) {
-  var len = text.length, space = ' ', charTracker = {}, i, numberOfOccurences;
+  var len = text.length, space = ' ', charTracker = {}, i, currentChar, letterInObject;
   if (len === 0) {
     return '';
   }
   for (i = 0; i < len; i++) {
     currentChar = text[i];
-    var letterInObject = charTracker["letter " + currentChar];
+    letterInObject = charTracker["letter " + currentChar];
     if (letterInObject && currentChar !== space) {
       charTracker["letter " + currentChar] += 1;
     } else if (!letterInObject && currentChar !== space) {
