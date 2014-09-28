@@ -1,26 +1,29 @@
-function firstNonRepeating(text) {
-  var len = text.length, space = ' ', charTracker = {}, index, prop, currentChar, letterInObject;
-  if (!text) {
-    return '';
-  }
-  for (index = 0; index < len; index++) {
-    currentChar = text[index];
-    letterInObject = charTracker[currentChar];
-    if (letterInObject && currentChar !== space) {
+function firstNonRepeating(input) {
+  var charTracker = {}
+      , currentChar;
+
+  for (var i = 0; i < input.length; i++) {
+    currentChar = input[i];
+
+    if (charTracker[currentChar] !== undefined) {
       charTracker[currentChar] += 1;
-    } else if (!letterInObject && currentChar !== space) {
+    }
+    else {
       charTracker[currentChar] = 1;
     }
   }
-  for (prop in charTracker) {
-    if (charTracker[prop] === 1) {
-      return prop;
+
+  for (currentChar in charTracker) {
+
+    if (charTracker[currentChar] === 1) {
+      return currentChar;
     }
   }
   return '';
 }
 
-console.log(firstNonRepeating('a a aab c debfg'));
+console.log(firstNonRepeating('a a aab cr de_bfg'));
 console.log(firstNonRepeating(''));
-console.log(firstNonRepeating('abc  abc a      bc g abcabf g '));
+console.log(firstNonRepeating('aabbcc'));
 console.log(firstNonRepeating('  '));
+console.log(firstNonRepeating('aqr !. )) "pq" a /r'));
